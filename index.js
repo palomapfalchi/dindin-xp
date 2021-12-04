@@ -16,18 +16,27 @@ let cursos = [{
 
 
 function listarCursos() {
+
+    let htmlCursos = "";
+    //criando lista de cursos em html
     for (let index = 0; index < cursos.length; index++) {
-        console.log(`
-        Título: ${cursos[index].titulo}
-        Descrição: ${cursos[index].descricao}
-        Professor: ${cursos[index].professor}
-        Número de aulas: ${cursos[index].listaAulas.length}
-        `);
+        htmlCursos += `
+            <article class="card">
+                <h2>${cursos[index].titulo}</h2>
+                <p>${cursos[index].descricao}</p>
+                <p>Professor: ${cursos[index].professor}</p>
+            </article>
+        `;
     }
+    //selecionando elemnto que vai englobar a lista
+    let painelCursos = document.querySelector(".painel-cursos");
+    //inserindo lista de cursos no html
+    painelCursos.innerHTML = htmlCursos;
+
 }
 
 //listarCursos();
-//idCyrso = numero, linkAula = string
+//idCurso = numero, linkAula = string
 
 // function adicionarAula(idCurso, linkAula) {
 //     //findIndex retorna a posição do array do curso encontrado
@@ -47,11 +56,12 @@ function adicionarAula(idCurso, linkAula) {
             indexCurso = i;
         }
     }
-    //adicionando novo aula ao curso selecionado
+    //adicionando nova aula ao curso selecionado
     cursos[indexCurso].listaAulas.push(linkAula);
 
     console.log(`Aula adicionada ao curso ${cursos[indexCurso].titulo}`);
 }
 
-// adicionarAula(2, "https://youtube.com");
-// listarCursos();
+adicionarAula(2, "https://youtube.com");
+listarCursos();
+
