@@ -62,6 +62,35 @@ function adicionarAula(idCurso, linkAula) {
     console.log(`Aula adicionada ao curso ${cursos[indexCurso].titulo}`);
 }
 
-adicionarAula(2, "https://youtube.com");
-listarCursos();
+//cadastro de curso
+let btnEnviar = document.querySelector("#btnEnviar");
 
+btnEnviar.onclick = function (evento) {
+    //prevenindo ação padrão
+    evento.preventDefault();
+    //capturar campos do formulario
+    let titulo_input = document.querySelector("#titulo");
+    let descricao_input = document.querySelector("#descricao");
+    let professor_input = document.querySelector("#professor");
+
+    //criando novo curso a partir dos dados do form
+    let novoCurso = {
+        id: cursos.length,
+        titulo: titulo.value,
+        descricao: descricao.value,
+        professor: professor.value,
+        listaAulas: []
+    };
+
+    //adicionando novo curso na lista
+    cursos.push(novoCurso);
+
+    listarCursos();
+
+};
+
+/*
+adicionarAula(2, "https://youtube.com");*/
+
+
+listarCursos();
